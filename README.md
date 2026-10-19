@@ -1,22 +1,11 @@
-# Kerbside Mechanic (Node.js)
+# Kerbside Mechanic
 
-## Run
-Install Node.js 20+ and run:
+Node.js/Express mobile mechanic website with booking requests, SQLite and password-protected admin at `/admin`.
 
-```powershell
-npm install
-Copy-Item .env.example .env
-npm start
-```
+## Render
+Use a **Web Service**, Node runtime, blank root directory, build command `npm install`, start command `npm start`.
+Set `ADMIN_USERNAME` (default `admin`), `ADMIN_PASSWORD` (strong unique password), `SESSION_SECRET` (random 32+ character secret), `NODE_ENV=production`, and `DATA_DIR` (persistent disk directory when supported).
 
-Open http://localhost:3000
+**Important:** SQLite data in ephemeral Render storage is lost on redeploy. Configure persistent storage or migrate to a managed database before accepting real customer requests. The free plan may not support persistent disks.
 
-## Features
-- Responsive Welsh-branded landing page using your supplied logo
-- Services and mobile mechanic marketing content
-- Booking request and quote request forms stored in SQLite
-- Basic rate limiting and server-side input validation
-- Admin enquiry API: `GET /api/admin/enquiries` with `x-admin-key` header set to ADMIN_API_KEY from `.env`
-
-## Before public launch
-Replace placeholder contact and coverage details, set a strong ADMIN_API_KEY, configure HTTPS and backups, add privacy policy and retention policy, add anti-spam protection, and implement a proper authenticated admin UI. Form submissions are enquiries, not confirmed appointments. No email notifications are configured yet.
+No passwords or database files belong in GitHub. Visit `/admin` after setting credentials.
