@@ -67,7 +67,7 @@ app.get('/api/admin/me',auth,(_req,res)=>res.json({ok:true,user:adminUser}));
 app.get('/api/services',(_req,res)=>res.json(db.prepare('SELECT id,name,price,description FROM services WHERE active=1 ORDER BY id').all()));
 app.post('/api/enquiries',enquiryLimiter,sameOrigin,(req,res)=>{
  const b=req.body||{},kind=trim(b.kind,20),name=trim(b.name,100),email=trim(b.email,150),phone=trim(b.phone,50),message=trim(b.message,2000);
- if(!['booking','quote'].includes(kind)||name.length<2||!/^\\S+@\\S+\\.\\S+$/.test(email)||phone.length<7||message.length<5)return res.status(400).json({error:'Please complete all required fields.'});
+ if(!['booking','quote'].includes(kind)||name.length<2||!/^\S+@\S+\.\S+$/.test(email)||phone.length<7||message.length<5)return res.status(400).json({error:'Please complete all required fields.'});
  const result=db.prepare('INSERT INTO enquiries(kind,name,email,phone,vehicle,service,preferred_date,message) VALUES(?,?,?,?,?,?,?,?)').run(kind,name,email,phone,trim(b.vehicle,100),trim(b.service,100),trim(b.preferred_date,30),message);
  res.status(201).json({ok:true,id:result.lastInsertRowid});
 });
