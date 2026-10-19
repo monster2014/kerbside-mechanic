@@ -1,0 +1,1 @@
+{"name":"kerbside-mechanic","version":"1.0.0","private":true,"type":"module","scripts":{"start":"node server.js"},"dependencies":{"express":"^4.21.2","better-sqlite3":"^11.8.1","dotenv":"^16.4.7","helmet":"^8.0.0","express-rate-limit":"^7.5.0"}}
